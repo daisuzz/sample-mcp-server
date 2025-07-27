@@ -1,22 +1,28 @@
 {
-  "name": "filesystem-mcp-server",
+  "name": "sample-mcp-server",
   "version": "1.0.0",
-  "description": "A Model Context Protocol server for filesystem operations",
-  "main": "dist/index.js",
+  "description": "Collection of Model Context Protocol server implementations",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "shared"
+  ],
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.0"
+    "build": "npm run build --workspaces",
+    "build:stdio": "npm run build --workspace=@mcp-samples/filesystem-stdio",
+    "build:http": "npm run build --workspace=@mcp-samples/filesystem-http",
+    "start:stdio": "npm run start --workspace=@mcp-samples/filesystem-stdio",
+    "start:http": "npm run start --workspace=@mcp-samples/filesystem-http",
+    "dev:stdio": "npm run dev --workspace=@mcp-samples/filesystem-stdio",
+    "dev:http": "npm run dev --workspace=@mcp-samples/filesystem-http",
+    "clean": "rm -rf packages/*/dist shared/dist"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
     "typescript": "^5.8.3",
     "ts-node": "^10.9.2"
   },
-  "keywords": ["mcp", "filesystem", "tools"],
-  "author": "",
+  "keywords": ["mcp", "filesystem", "http", "stdio", "tools", "samples"],
+  "author": "daisuzz",
   "license": "MIT"
 }
